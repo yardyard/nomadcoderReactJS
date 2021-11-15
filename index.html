@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div id ="root"></div>
+    
+</body>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script>
+        const root = document.querySelector("#root");
+        // span을 만들고, property를 주어준다음, 내부에 들어갈 내용들을 만들어줌.
+        const h3 = React.createElement(
+            "h3", 
+        {
+            id:"title",
+            onMouseEnter: () => console.log("mouse enter"),       
+        }, 
+        "Hello I'm a span");
+        
+        const btn = React.createElement(
+            "button", 
+        {
+            onClick: () => console.log("im clicked"),
+            style: {
+                backgroundColor:"tomato",
+            },
+        }, 
+        "Click me!!!");
+        
+        const container = React.createElement("div", null, [h3, btn]);
+        
+        // render의 의미는 React element를 가지고 HTML로 만들어 배치하겠다는 뜻임.
+        // div를 root에 render하는데 그안에 span과 btn을 동시해 render함.
+        ReactDOM.render(container, root);
+    </script>
+</html>
