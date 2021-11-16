@@ -5,35 +5,40 @@
 </head>
 <body>
     <div id ="root"></div>
-    
 </body>
 <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script>
-        const root = document.querySelector("#root");
-        // span을 만들고, property를 주어준다음, 내부에 들어갈 내용들을 만들어줌.
-        const h3 = React.createElement(
-            "h3", 
-        {
-            id:"title",
-            onMouseEnter: () => console.log("mouse enter"),       
-        }, 
-        "Hello I'm a span");
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.querySelector("#root"); // span을 만들고, property를 주어준다음, 내부에 들어갈 내용들을 만들어줌.
         
-        const btn = React.createElement(
-            "button", 
-        {
-            onClick: () => console.log("im clicked"),
-            style: {
+    // container에서 Title이나 Button을 포함시키기 위해서 Title이나 Button을 함수로 만들어주어야 함 = ()
+    const Title = () => (
+        <h3 
+            id="title" onMouseEnter={() => console.log("mouse enter")}>
+                Hello I'm a title
+            </h3>
+        );
+        const Button = () => (
+            <button 
+              style={{
                 backgroundColor:"tomato",
-            },
-        }, 
-        "Click me!!!");
-        
-        const container = React.createElement("div", null, [h3, btn]);
-        
+            }} 
+              onClick={() => console.log("im clicked")}
+            >
+                Click me!!!
+            </button>
+        );
+        // div 태그를 랜더링하고 있는 컴포넌트가 Title과 Button에 관련된 코드를 포함시키고 있음.
+        // 컴포넌트의 첫글자는 반드시 대문자이어야 한다. 소문자이면 HTML 태그라고 인식이 된다.
+        const container = () => (
+            <div>
+                <Title />
+                <Button />
+            </div>   
+        );
         // render의 의미는 React element를 가지고 HTML로 만들어 배치하겠다는 뜻임.
         // div를 root에 render하는데 그안에 span과 btn을 동시해 render함.
-        ReactDOM.render(container, root);
+        ReactDOM.render(<container/>, root);
     </script>
 </html>
