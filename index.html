@@ -11,23 +11,20 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.querySelector("#root"); 
-    let counter = 0;
-    function cntUp(){
-        counter = counter + 1;
-        render();
-    }
-    function render(){
-        // 함수가 호출 될 때마다 UI를 업데이트(렌더링) 해주는 함수
-        ReactDOM.render(<Container/>, root);
-    }
-
-    const Container = () => (
+    function App(){
+        const [counter, setCounter] = React.useState(0);
+        // onClick 함수는 실행 시 modifier(counter + 1)를 반환해준다.
+        const onClick = () => {
+            //modifier 함수는 ()안의 값으로 업데이트하고 자동으로 리렌더링을 일으켜준다.
+            modifier(counter + 1);
+        }
+        return(
         <div>
             <h3>Total clicks: {counter}</h3> 
-            <button onClick={(cntUp)}>Click me!!!</button>
+            <button onClick={onClick}>Click me!!!</button>
         </div>   
         );
-        // 어플리케이션이 시작될 때 render 함수 호출
-        render();
+    }
+    ReactDOM.render(<App />, root);    
     </script>
 </html>
