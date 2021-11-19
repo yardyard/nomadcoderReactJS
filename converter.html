@@ -12,33 +12,56 @@
 <script type="text/babel">
     const root = document.querySelector("#root"); 
     function App(){
-        const [minutes, setMinutes] = React.useState();
+        // -------- State --------
+        const [amount, setAmount] = React.useState(0);
+        const [flipped, setFlipped] = React.useState(false);
+
+
+        // -------- event --------
         const onChange = (event) => {
             // modifier에 input에서 입력된 값을 넣어줌.
-            setMinutes(event.target.value);
+            setAmount(event.target.value);
         };
+        const reset = () => {
+            setAmount(0);
+        };
+        const onFlip = () => {
+            reset();
+            setFlipped((current) => !current);
+        };
+
+        // -------- JSX --------
         return(
             <div>
                 <h1>Super Converter</h1> 
-                {/*lable은 사용자가 input에 뭘 적어야할지 알려줍니다.
-                    for은 input과 label을 연결시켜줍니다.*/}
-                <label htmlFor="minutes">Minutes</label>
-                <input         
-                    value = {minutes}
-                    id ="minutes" 
-                    placeholder="Minutes" 
-                    type="number"
-                    onChange={onChange}
-                    />
-                <h4>You want to convert {minutes}</h4>
-                <label htmlFor="hours">Hours</label>
-                <input 
-                    id ="hours" 
-                    placeholder="Hours" 
-                    type="number"/>
+                    <div>
+                        <label htmlFor="minutes">Minutes</label>
+                        <input         
+                            value = {flipped ? amount * 60 : amount}
+                            id ="minutes" 
+                            placeholder="Minutes" 
+                            type="number"
+                            onChange={onChange}
+                            disabled={flipped === true}
+                            />
+                    </div>
+                    <div>
+                        <label htmlFor="hours">Hours</label>
+                        <input 
+                            value = {flipped ? amount : Math.round(amount/60)}
+                            id ="hours" 
+                            placeholder="Hours" 
+                            type="number"
+                            onChange={onChange}
+                            disabled={flipped === false}
+                            />
+                    </div>
+                    <button onClick={reset}>Reset</button>
+                    <button onClick={onFlip}>{flipped ? "Trun back" : "Flip"}</button>
             </div> 
         );
     }
+    // -------- render --------
     ReactDOM.render(<App />, root);    
     </script>
 </html>
