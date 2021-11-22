@@ -1,23 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <span>Total clicks: 0</span>
-    <button id="btn">Click me!!!</button>
+    <div id ="root"></div>
 </body>
-    <script>
-        let counter = 0;
-        const button = document.querySelector("#btn"); 
-        const span = document.querySelector("span");
-        function handleClick() {
-        counter = counter + 1;
-        span.innerText = `Total clicks: ${counter}`;
-       }
-       button.addEventListener("click",handleClick);
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    // App() 컴포넌트는 JAVA의 메인 클래스 느낌
+    function Btn({ text, onClick, fontSize }){
+         {/* onClick 매개변수와 onClick, text Prop이 존재함으로 props를 성공적으로 받을 수 있다. */}
+        return <button onClick= {onClick}
+            style={{
+            backgroundColor: "tomato",
+            color:"white",
+            padding:"10px 20px",
+            border: 0,
+            borderRadius: 10,
+            fontSize,
+        }}>
+        {text}
+        </button>;
+    }
+    
+
+    function App(){
+        // -------- State --------
+        const Btn1 = React.memo(Btn);
+        const [value, setValue] = React.useState("Save");
+
+        // -------- event --------
+        const changeValue = () => {
+            setValue("Revert Changes");
+        }
+        // -------- JSX --------
+        return(
+            <div>
+                {/* props를 인자로 보낼 때 컴포넌트에 이미 인자값을 받을 매개변수와 Prop이 있어야 함. */}
+                <Btn1 text={value}
+                    onClick={changeValue}
+                    fontSize= {18}
+                />   
+                <Btn1 text="Changes"/>
+            </div>
+        );
+    }
+    
+    const root = document.querySelector("#root"); 
+    // -------- render --------
+    ReactDOM.render(<App />, root);    
     </script>
 </html>
