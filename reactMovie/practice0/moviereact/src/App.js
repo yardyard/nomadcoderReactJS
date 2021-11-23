@@ -1,19 +1,30 @@
-// button.js에 있는 Button 컴포넌트를 import한다.
-import Button from "./button";
-import PropTypes from "prop-types";
-import styles from "./App.module.css";
+// --------- import ---------
+import { useEffect, useState } from "react";
 
 function App() {
-  return (
-    <div>
-      <h1 className={styles.title}>Welcome back to React!</h1>
-      <Button text={"Continue"}/>
-    </div>
-  );
+  // --------- state ---------
+const [showing, setShowing] = useState(false);
+  // --------- function ---------
+const onClick =() => {
+  setShowing(prev => !prev);
 }
 
-Button.propTypes = {
-  text: PropTypes.string.isRequired,
+function Hello() {
+  useEffect(()=> {
+    console.log("Created :)");
+    return () => console.log("destoryed")
+  }, [])
+  return  <h1>Hello</h1>;
+}
+  // --------- rendering ---------
+  return (
+    <div>
+
+      {showing ? <Hello />: null}
+      {/* 버튼을 클릭시 함수가 호출되고, value가 false이면 "Hide, True이면 "Show"출력*/}
+      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
+    </div>
+  );
 }
 
 export default App;
