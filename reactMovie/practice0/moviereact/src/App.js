@@ -3,26 +3,37 @@ import { useEffect, useState } from "react";
 
 function App() {
   // --------- state ---------
-const [showing, setShowing] = useState(false);
+  const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+  
   // --------- function ---------
-const onClick =() => {
-  setShowing(prev => !prev);
-}
-
-function Hello() {
-  useEffect(()=> {
-    console.log("Created :)");
-    return () => console.log("destoryed")
-  }, [])
-  return  <h1>Hello</h1>;
-}
+  const onChange=(event) => {
+    setToDo(event.target.value); };
+  
+    const onSubmit=(event) => {
+    // form의 submit 이벤트시 새로고침 되는 것을 막아줌.
+    event.preventDefault();
+    if(toDo === ""){
+      return;
+    }
+    // ...array의 의미는 기존 array에 index들을 가져온다는 의미이다.
+    // 아래 코드는 toDo를 기존 currentArray에 새로운 인덱스로 넣어서 새로운 array를 만든다는 뜻이다.
+    setToDos(currentArray => [toDo, ...currentArray]);
+    // 입력을 제출하였으면 다시 input창을 "" 빈 값을 넣어줌.
+    setToDo("");
+  };
   // --------- rendering ---------
   return (
     <div>
-
-      {showing ? <Hello />: null}
-      {/* 버튼을 클릭시 함수가 호출되고, value가 false이면 "Hide, True이면 "Show"출력*/}
-      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
+      <h1>My To-Dos ({toDos.length})</h1>
+      <form>
+        <input onChange={onChange} value={toDo} type="text" placeholder="write your to do..." />
+        <button onClick={onSubmit}>Add to Do</button>
+      </form>
+      <hr />
+      <ul>
+        {toDos.map((toDo, index)=> <li key={index}>{toDo}</li>)}
+      </ul>
     </div>
   );
 }
