@@ -13,7 +13,7 @@ function App() {
   <Router>
     <Switch>
        {/* 유저가 해당 경로에 있다면, Detail컴포넌트를 렌더링 해준다는 뜻*/}
-      <Route path="/movie">
+      <Route path="/movie/:id">
         <Detail />
       </Route>
       {/* 유저가 해당 경로에 있다면, Home Route컴포넌트를 렌더링 해준다는 뜻*/}

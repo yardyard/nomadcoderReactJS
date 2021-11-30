@@ -13,6 +13,7 @@ const getMovies = async() => {
   const json = await response.json();
   setMovies(json.data.movies);
   setLoading(false);  
+  console.log(movies);
 }
 useEffect(() => {
   getMovies()
@@ -27,6 +28,7 @@ return (
     {loading ? <h1>Loading... Just wait a minute</h1> 
     : <div>{movies.map(movie => 
       (<Movie key={movie.id}
+          id={movie.id}
           coverImage={movie.medium_cover_image}
           title={movie.title}
           summary={movie.summary}
