@@ -10,7 +10,7 @@ import Detail from "./routes/Detail";
 
 function App() {
   return (
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <Switch>
        {/* 유저가 해당 경로에 있다면, Detail컴포넌트를 렌더링 해준다는 뜻*/}
       <Route path="/movie/:id">
