@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/nomadcoderReactJS.git/static/js/main.3ea50557.chunk.js",
-    "main.js.map": "/nomadcoderReactJS.git/static/js/main.3ea50557.chunk.js.map",
-    "runtime-main.js": "/nomadcoderReactJS.git/static/js/runtime-main.47a9e9c6.js",
-    "runtime-main.js.map": "/nomadcoderReactJS.git/static/js/runtime-main.47a9e9c6.js.map",
-    "static/js/2.03696b49.chunk.js": "/nomadcoderReactJS.git/static/js/2.03696b49.chunk.js",
-    "static/js/2.03696b49.chunk.js.map": "/nomadcoderReactJS.git/static/js/2.03696b49.chunk.js.map",
-    "index.html": "/nomadcoderReactJS.git/index.html",
-    "static/js/2.03696b49.chunk.js.LICENSE.txt": "/nomadcoderReactJS.git/static/js/2.03696b49.chunk.js.LICENSE.txt"
+    "main.js": "/nomadcoderReactJS/static/js/main.4d44630c.chunk.js",
+    "main.js.map": "/nomadcoderReactJS/static/js/main.4d44630c.chunk.js.map",
+    "runtime-main.js": "/nomadcoderReactJS/static/js/runtime-main.5c1cc635.js",
+    "runtime-main.js.map": "/nomadcoderReactJS/static/js/runtime-main.5c1cc635.js.map",
+    "static/js/2.03696b49.chunk.js": "/nomadcoderReactJS/static/js/2.03696b49.chunk.js",
+    "static/js/2.03696b49.chunk.js.map": "/nomadcoderReactJS/static/js/2.03696b49.chunk.js.map",
+    "index.html": "/nomadcoderReactJS/index.html",
+    "static/js/2.03696b49.chunk.js.LICENSE.txt": "/nomadcoderReactJS/static/js/2.03696b49.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.47a9e9c6.js",
+    "static/js/runtime-main.5c1cc635.js",
     "static/js/2.03696b49.chunk.js",
-    "static/js/main.3ea50557.chunk.js"
+    "static/js/main.4d44630c.chunk.js"
   ]
 }
